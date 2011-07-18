@@ -1,0 +1,3 @@
+RewriteEngine on
+
+RewriteRule ^yeni-haber-eklendi-([0-9]+)/$ sayfa.php?id=$1 
