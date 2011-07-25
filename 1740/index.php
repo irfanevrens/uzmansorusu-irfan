@@ -39,7 +39,7 @@ $(document).ready(function() {
 		
 			$.each(data, function(index, value) {
 
-				sonuc += '<input type="checkbox" value="' + value.id + '" name="secili_ilceler"> ' + value.adi + '<br />';
+				sonuc += '<input type="checkbox" value="' + value.id + '" name="secili_ilceler[]"> ' + value.adi + '<br />';
 			});
 
 			$('#ilceler').html(sonuc);
@@ -49,12 +49,34 @@ $(document).ready(function() {
 
 </script>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+<?php 
 
-<select id="iller">
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+	echo '<p>POST Verileri</p>';
+	
+	echo '<pre>';
+	print_r($_POST);
+	echo '</pre>';
+	
+}
+
+?>
+
+<form action="index.php" method="post">
+
+<select id="iller" name="secili_id">
 	
 </select>
 
 <div id="ilceler">
 	
 </div>
+
+<hr />
+
+<input type="submit" value="Gönder" />
+
+</form>
