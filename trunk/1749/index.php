@@ -4,13 +4,13 @@
 $ServisAdresi = 'https://sonucservis.osym.gov.tr/service.asmx?WSDL';
 
 // web servisini kullanmak yetki gerektirmektedir. 
-// bu kýsýmda yetki bilgilerinizi tanýmlayabilirsiniz.
+// bu kÄ±sÄ±mda yetki bilgilerinizi tanÄ±mlayabilirsiniz.
 $KullaniciAdi = 'kullanici_adi';
 $Sifre = 'sifre';
 
-// bu örnekte SonucGetir fonksiyonunu test ediyoruz.
-// bu fonksiyon için istenen bilgiler aþaðýdadýr.
-// örnek olarak bir tane girerek deneme yapabilirsiniz.
+// bu Ã¶rnekte SonucGetir fonksiyonunu test ediyoruz.
+// bu fonksiyon iÃ§in istenen bilgiler aÅŸaÄŸÄ±dadÄ±r.
+// Ã¶rnek olarak bir tane girerek deneme yapabilirsiniz.
 $SinavId = 14; 
 $SinavYili = 2011;
 $SinavDonemi = 'S1';
@@ -21,10 +21,10 @@ $client = new SoapClient(
 					array(
 						'soap_version'  => SOAP_1_2));
 
-// Web Servisi için NameServer deðeri
+// Web Servisi iÃ§in NameServer deÄŸeri
 $NS = 'https://sonucservis.osym.gov.tr/';
 
-// yetkilendirme için servis client header bilgisi
+// yetkilendirme iÃ§in servis client header bilgisi
 $Header = new SOAPHeader(
 					$NS, 
 					'AuthenticationHeader', 
@@ -35,7 +35,7 @@ $Header = new SOAPHeader(
 // header bilgisini set ediyoruz.
 $client->__setSoapHeaders($Header); 
 
-// web servisinden SonucGetir fonksiyonunu çaðýrýyoruz
+// web servisinden SonucGetir fonksiyonunu Ã§aÄŸÄ±rÄ±yoruz
 $SonucGetir = $client->__soapCall(
 							"SonucGetir", 
 							array(
@@ -45,19 +45,19 @@ $SonucGetir = $client->__soapCall(
 													'SinavDonemi' => $SinavDonemi, 
 													'TcKimlikNo' => $TcKimlikNo)));
 
-// gelen sonucu görmek için commentleri kaldýr
+// gelen sonucu gÃ¶rmek iÃ§in commentleri kaldÄ±r
 // echo '<pre>';
 // print_r($SonucGetir);
 // echo '</pre>';
 
-// Gelen sonuç içinde XMLData þeklinde bilgi var, bu bilgi 
-// xml olduðu için bunu önce php arrayýna çevirmemiz gerekiyor
+// Gelen sonuÃ§ iÃ§inde XMLData ÅŸeklinde bilgi var, bu bilgi 
+// xml olduÄŸu iÃ§in bunu Ã¶nce php arrayÄ±na Ã§evirmemiz gerekiyor
 $SonucuParcala = simplexml_load_string($SonucGetir->SonucGetirResult->XMLData);
 
 echo '<pre>';
 print_r($SonucuParcala);
 echo '</pre>';
 
-// Ýstenirse sonuçlara tek tek þu þekilde eriþilebilir
-// Görmek için yorumu kaldýrabilirsiniz.
+// Ä°stenirse sonuÃ§lara tek tek ÅŸu ÅŸekilde eriÅŸilebilir
+// GÃ¶rmek iÃ§in yorumu kaldÄ±rabilirsiniz.
 // echo 'YGS2_ALAN: ' . $SonucuParcala->YGS2_ALAN;
