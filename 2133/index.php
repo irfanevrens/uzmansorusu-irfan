@@ -12,13 +12,13 @@ $(document).ready(function() {
 
 			// seçili ise
 
-			$('#secenek').css('display', 'none');
+			$('#secenek').css('display', 'inline');
 			
 		} else {
 
 			// seçili değilse
 
-			$('#secenek').css('display', 'inline');
+			$('#secenek').css('display', 'none');
 		}
 	});
 
